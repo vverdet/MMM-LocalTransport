@@ -1,0 +1,13 @@
+https://open-api.bahn.de/bin/rest.exe/location.name?authKey=&lang=de&input=mannheim
+
+<LocationList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://open-api.bahn.de/bin/rest.exe/v1.0/xsd?name=hafasRestLocation.xsd">
+  <StopLocation name="Mannheim Hbf" lon="8.468917" lat="49.479351" id="008000244"/>
+</LocationList>
+
+https://open-api.bahn.de/bin/rest.exe/location.name?authKey=&lang=de&input=walldorf
+
+<LocationList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://open-api.bahn.de/bin/rest.exe/v1.0/xsd?name=hafasRestLocation.xsd">
+  <StopLocation name="Walldorf-Wiesloch" lon="8.664145" lat="49.291351" id="008006421"/>
+</LocationList>
+
+https://open-api.bahn.de/bin/rest.exe/departureBoard?authKey=&lang=de&id=008000105&date=2016-02-22&time=15%3a00
