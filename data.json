@@ -11,3 +11,12 @@ https://open-api.bahn.de/bin/rest.exe/location.name?authKey=&lang=de&input=walld
 </LocationList>
 
 https://open-api.bahn.de/bin/rest.exe/departureBoard?authKey=&lang=de&id=008000105&date=2016-02-22&time=15%3a00
+
+
+
+<station shortName="MIMA" longitude="8.4675652778" longName="Marktplatz (MA)" latitude="49.4892136111" hafasID="2438" elementID="2438"/>
+
+
+https://github.com/silsha/rnv.js
+
+https://github.com/silsha/rnv-api/wiki
