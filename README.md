@@ -4,6 +4,12 @@
 
 The idea is to build a module to display the next x departures on a certain train station to a certain destination. Might also be possible via the DB Api. 
 
+##RNV
+
+RNV published TRIAS API: http://www.vrn.de/vrn/einfach-ankommen/fahrplanauskunft/openservice/index.html
+
+API Key available after registration.
+
 
 ## Deutsche Bahn
 
