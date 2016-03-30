@@ -1,4 +1,4 @@
-# MagicMirror-Rnv-Module
+# MagicMirror-LocalTransport-Module
 
 | [MagicMirror Project on Github](https://github.com/MichMich/MagicMirror) | [RNV Page](http://www.rnv-online.de/startseite.html) |
 
