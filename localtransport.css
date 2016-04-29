@@ -1,0 +1,20 @@
+.localtransport ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+.localtransport ul li {
+  margin-bottom: .25em;
+}
+.localtransport ul li img:first-child {
+  margin-left: 0;
+}
+.localtransport ul li img {
+  margin: 0 .25em 0 .5em;
+}
+.localtransport ul li div {
+  margin-left: .25em;
+}
+
+/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
