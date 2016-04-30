@@ -41,7 +41,7 @@ Add module configuration to config.js.
 |`destination`|The target location.<br><br>**Example:** `Frankfurt HBF`<br>This value is **REQUIRED**|
 |`maxConnections`|How many connections should be displayed?<br><br>**Default value:** `3`|
 |`updateInterval`|How often does the content needs to be fetched? (Minutes)<br><br>**Default value:** `5`|
-|`animationSpeed`|Speed of the update animation. (Seconds)<br><br>**Default value:** `1`<br><br>**Default value:** `3`|
+|`animationSpeed`|Speed of the update animation. (Seconds)<br><br>**Default value:** `1`|
 
 ## Special Thanks
 
