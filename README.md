@@ -37,7 +37,7 @@ Add module configuration to config.js.
 |Option|Description|
 |---|---|
 |`apiKey`|The API key, which can be obtained [here](https://developers.google.com/maps/documentation/directions/).<br><br>This value is **REQUIRED**|
-|`origin`|The start location.<br><br>**Example:** `MannheimHBF`<br>This value is **REQUIRED**|
+|`origin`|The start location.<br><br>**Example:** `Mannheim HBF`<br>This value is **REQUIRED**|
 |`destination`|The target location.<br><br>**Example:** `Frankfurt HBF`<br>This value is **REQUIRED**|
 |`maxConnections`|How many connections should be displayed?<br><br>**Default value:** `3`|
 |`updateInterval`|How often does the content needs to be fetched? (Minutes)<br><br>**Default value:** `5`|
