@@ -45,4 +45,4 @@ Add module configuration to config.js.
 
 ## Special Thanks
 
-Thanks to [SamLewis0602](https://github.com/SamLewis0602) and his module [MMM-Traffic by SamLewis0602](https://github.com/SamLewis0602/MMM-Traffic) on which this module is based on.
+Thanks to [SamLewis0602](https://github.com/SamLewis0602) for his module [MMM-Traffic by SamLewis0602](https://github.com/SamLewis0602/MMM-Traffic) on which this one is based on.
