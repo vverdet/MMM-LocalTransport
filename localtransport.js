@@ -7,8 +7,8 @@
  */
 Module.register('localtransport', {
   defaults: {
-    animationSpeed: 1000,
-    updateInterval: 300,
+    animationSpeed: 1,
+    updateInterval: 5,
     mode: 'transit',
     traffic_model: 'best_guess',
     departure_time: 'now',
@@ -79,7 +79,7 @@ Module.register('localtransport', {
           if(payload && payload.status === "OK"){
             this.data = payload;
             this.loaded = true;
-            this.updateDom(this.config.animationSpeed);
+            this.updateDom(this.config.animationSpeed * 1000);
           }
       }
   },
