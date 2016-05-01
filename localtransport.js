@@ -62,11 +62,9 @@ Module.register('localtransport', {
     }
     var details = step.transit_details;
     if(details) {
-      if(details.line.vehicle.local_icon){
-        var img = document.createElement("img");
-        img.src = details.line.vehicle.local_icon;
-        wrapper.appendChild(img);
-      }
+      var img = document.createElement("img");
+      img.src = details.line.vehicle.local_icon || ("http:" + details.line.vehicle.icon);
+      wrapper.appendChild(img);
       var span = document.createElement("span");
       span.innerHTML = details.line.short_name || details.line.name;
       span.className = "bright";
