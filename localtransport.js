@@ -68,7 +68,7 @@ Module.register('localtransport', {
         wrapper.appendChild(img);
       }
       var span = document.createElement("span");
-      span.innerHTML = details.line.short_name;
+      span.innerHTML = details.line.short_name || details.line.name;
       span.className = "bright";
       wrapper.appendChild(span);
     }
