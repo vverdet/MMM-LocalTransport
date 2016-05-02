@@ -1,6 +1,7 @@
 # MagicMirror-LocalTransport-Module
 
 <p>
+<img src="https://img.shields.io/badge/Status-BETA-red.svg" alt="Status-BETA">
 <a href="http://choosealicense.com/licenses/mit"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
 </p>
 
