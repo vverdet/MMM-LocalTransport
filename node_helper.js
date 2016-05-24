@@ -16,11 +16,14 @@ module.exports = NodeHelper.create({
     if (notification === 'LOCAL_TRANSPORT_REQUEST') {
       var that = this;
       request({
-          url: payload,
+          url: payload.url,
           method: 'GET'
         }, function(error, response, body) {
         if (!error && response.statusCode == 200) {
-          that.sendSocketNotification('LOCAL_TRANSPORT_RESPONSE', JSON.parse(body));
+          that.sendSocketNotification('LOCAL_TRANSPORT_RESPONSE', {
+            id: payload.id,
+            data: JSON.parse(body)
+          });
         }
       });
     }

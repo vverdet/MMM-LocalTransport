@@ -31,8 +31,11 @@ Module.register('localtransport', {
   },
   update: function() {
       this.sendSocketNotification(
-        'LOCAL_TRANSPORT_REQUEST',
-        this.config.apiBase + this.config.apiEndpoint + this.getParams());
+        'LOCAL_TRANSPORT_REQUEST', {
+          id: this.identifier,
+          url: this.config.apiBase + this.config.apiEndpoint + this.getParams()
+        }
+      );
   },
   getParams: function() {
       var params = '?';
@@ -72,10 +75,10 @@ Module.register('localtransport', {
     }
   },
   socketNotificationReceived: function(notification, payload) {
-      if (notification === 'LOCAL_TRANSPORT_RESPONSE') {
+      if (notification === 'LOCAL_TRANSPORT_RESPONSE' && payload.id === this.identifier) {
           Log.info('received' + notification);
-          if(payload && payload.status === "OK"){
-            this.data = payload;
+          if(payload.data && payload.data.status === "OK"){
+            this.data = payload.data;
             this.loaded = true;
             this.updateDom(this.config.animationSpeed * 1000);
           }
