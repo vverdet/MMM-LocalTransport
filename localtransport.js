@@ -143,7 +143,7 @@ Module.register('localtransport', {
             if (this.config.displayStationLength > 0){
                 /* add departure stop (shortened)*/
                 span.innerHTML += " (from " + this.shorten(details.departure_stop.name, this.config.displayStationLength) + ")";
-            }else if (this.config.displayStationLength = 0){
+            }else if (this.config.displayStationLength == 0){
                 /* add departure stop*/
                 span.innerHTML += " (from " + details.departure_stop.name + ")";
             }
