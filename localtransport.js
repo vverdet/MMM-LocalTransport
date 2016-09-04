@@ -10,10 +10,12 @@ Module.register('localtransport', {
   defaults: {
     maximumEntries: 3,
     displayStationLength: 0,
-    displayWalk: false,
-    maxWalkTime: 15,
+    displayWalkType: 'short',
+    displayArrival: true,
+    maxWalkTime: 10,
     fade: true,
-    fadePoint: 0.3,
+    fadePoint: 0.1,
+    maxModuleWidth: 0,
     animationSpeed: 1,
     updateInterval: 5,
     language: config.language,
@@ -85,12 +87,12 @@ Module.register('localtransport', {
     //var depadd = leg.start_address;
     var span = document.createElement("div");
     span.className = "small bright";
-    span.innerHTML = moment(depature).fromNow();
+    span.innerHTML = moment(depature).locale(this.config.language).fromNow();
     // span.innerHTML += "from " + depadd;
-    if (this.config.timeFormat == 24){
-        span.innerHTML += " (arrival: " + moment(arrival).format("H:mm") + ")";
-    }else{
-        span.innerHTML += " (arrival: " + moment(arrival).format("h:mm") + ")";
+    if (this.config.displayArrival && this.config.timeFormat == 24){
+        span.innerHTML += " ("+this.translate("ARRIVAL")+": " + moment(arrival).format("H:mm") + ")";
+    }else if(this.config.displayArrival){
+        span.innerHTML += " ("+this.translate("ARRIVAL")+": " + moment(arrival).format("h:mm") + ")";
     }
     // span.innerHTML += this.translate('TRAVEL_TIME') + ": ";
     // span.innerHTML += moment.duration(moment(arrival).diff(depature, 'minutes'), 'minutes').humanize();
@@ -107,7 +109,7 @@ Module.register('localtransport', {
             /*if time of walking is longer than
              *specified, mark this route to be skipped*/
             wrapper.innerHTML = "too far";
-        }else if(this.config.displayWalk){
+        }else if(this.config.displayWalkType != 'none'){
             /*if walking and walking times should be 
              *specified, add symbol and time*/
             var img = document.createElement("img");
@@ -116,7 +118,12 @@ Module.register('localtransport', {
             //img.src = "/localtransport/walk.png"; //needs to be saved in localtransport/public/walk.png
             wrapper.appendChild(img)
             var span = document.createElement("span");
-            span.innerHTML = moment.duration(duration, 'seconds').humanize();
+            span.innerHTML = moment.duration(duration, 'seconds').locale(this.config.language).humanize();
+            if(this.config.displayWalkType == 'short'){
+                span.innerHTML = span.innerHTML.replace(this.translate("MINUTE_PL"),this.translate("MINUTE_PS"));
+                span.innerHTML = span.innerHTML.replace(this.translate("MINUTE_SL"),this.translate("MINUTE_SS"));
+                span.innerHTML = span.innerHTML.replace(this.translate("SECOND_PL"),this.translate("SECOND_PS"));
+            }
             span.className = "xsmall dimmed";
             wrapper.appendChild(span);
         }else{
@@ -142,10 +149,10 @@ Module.register('localtransport', {
             span.innerHTML = details.line.short_name || details.line.name;
             if (this.config.displayStationLength > 0){
                 /* add departure stop (shortened)*/
-                span.innerHTML += " (from " + this.shorten(details.departure_stop.name, this.config.displayStationLength) + ")";
+                span.innerHTML += " ("+this.translate("FROM")+" " + this.shorten(details.departure_stop.name, this.config.displayStationLength) + ")";
             }else if (this.config.displayStationLength == 0){
                 /* add departure stop*/
-                span.innerHTML += " (from " + details.departure_stop.name + ")";
+                span.innerHTML += " ("+this.translate("FROM")+" " + details.departure_stop.name + ")";
             }
             if (this.config.debug){
                 /* add vehicle type for debug*/
@@ -160,7 +167,7 @@ Module.register('localtransport', {
     if (notification === 'LOCAL_TRANSPORT_RESPONSE' && payload.id === this.identifier) {
         Log.info('received' + notification);
         if(payload.data && payload.data.status === "OK"){
-            this.response = payload.data;
+            this.data = payload.data;
             this.loaded = true;
             this.updateDom(this.config.animationSpeed * 1000);
         }
@@ -194,18 +201,18 @@ Module.register('localtransport', {
         var ul = document.createElement("ul");
         var Nrs = 0; //number of routes
         var routeArray = []; //array of all alternatives for later sorting
-        for(var routeKey in this.response.routes) {
+        for(var routeKey in this.data.routes) {
             /*each route describes a way to get from A to Z*/
             //if(Nrs >= this.config.maxAlternatives){
             //  break;
             //}
-            var route = this.response.routes[routeKey];
+            var route = this.data.routes[routeKey];
             var li = document.createElement("li");
             li.className = "small";
             var arrival = 0;
-            //if (this.config.maxModuleWidth > 0){
-            //  li.width = this.config.maxModuleWidth;
-            //}
+            if (this.config.maxModuleWidth > 0){
+              li.style.width = this.config.maxModuleWidth + "px";
+            }
             for(var legKey in route.legs) {
                 var leg = route.legs[legKey];
                 arrival = leg.arrival_time.value;
