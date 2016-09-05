@@ -248,7 +248,7 @@ Module.register('localtransport', {
             return parseFloat(a.arrival) - parseFloat(b.arrival);
         });
         /*only show the first few options as specified by "maximumEntries"*/
-        routeArray.slice(0, this.config.maximumEntries);
+        routeArray = routeArray.slice(0, this.config.maximumEntries);
         
         /*create fade effect and append list items to the list*/
         var e = 0;
