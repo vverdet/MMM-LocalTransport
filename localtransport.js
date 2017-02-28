@@ -182,7 +182,8 @@ Module.register('localtransport', {
   getTranslations: function() {
     return {
         de: "i18n/de.json",
-        en: "i18n/en.json"
+        en: "i18n/en.json",
+        sv: "i18n/sv.json"
     };
   },
   getDom: function() {
