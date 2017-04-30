@@ -50,6 +50,7 @@ Add module configuration to config.js.
 |`maxModuleWidth`|Maximum width of the module in pixel. Unlimited when set to `0`. This option can be used to make the module shorter in case of very long lines for directions. <br><br>**Default value:** `0`|
 |`fade`|Boolean if a fade should be applied - same as for calendar module<br><br>**Default value:** `true`|
 |`fadePoint`|Percentage, where the fade should start. This should be a value between 0 and 1 - same as for calendar module<br><br>**Default value:** `0.1`|
+|`showColor`|Boolean if transport symbols should be displayed in color (Note: symbols for default transport modes are always in grey)<br><br>**Default value:** `true`|
 |`language`|Language to display information in - german `de` or english `en`<br><br>**Default value** `is same as defined in the main config file`|
 |`units`|Units to use - `metric` or `imperial`<br><br>**Default value** `is same as defined in the main config file`|
 |`timeFormat`|`24` or `12` hour clock for displaying the arrival time<br><br>**Default value** `is same as defined in the main config file`|
