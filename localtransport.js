@@ -15,6 +15,7 @@ Module.register('localtransport', {
     maxWalkTime: 10,
     fade: true,
     fadePoint: 0.1,
+    showColor: true,
     maxModuleWidth: 0,
     animationSpeed: 1,
     updateInterval: 5,
@@ -113,7 +114,11 @@ Module.register('localtransport', {
             /*if walking and walking times should be 
              *specified, add symbol and time*/
             var img = document.createElement("img");
-            img.className = "symbol";
+            if(this.config.showColor){
+                img.className = "symbol";
+            }else{
+                img.className = "symbol bw";
+            }
             img.src = "http://maps.gstatic.com/mapfiles/transit/iw2/6/walk.png";
             //img.src = "/localtransport/walk.png"; //needs to be saved in localtransport/public/walk.png
             wrapper.appendChild(img)
@@ -136,7 +141,11 @@ Module.register('localtransport', {
         if(details) {
             /*add symbol of transport vehicle*/
             var img = document.createElement("img");
-            img.className = "symbol";
+            if(this.config.showColor){
+                img.className = "symbol";
+            }else{
+                img.className = "symbol bw";
+            }
             /* get symbol online*/
             img.src = details.line.vehicle.local_icon || ("http:" + details.line.vehicle.icon);
             /* can provide own symbols under /localtransport/public/*.png */
