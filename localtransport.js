@@ -167,7 +167,7 @@ Module.register('localtransport', {
     if (notification === 'LOCAL_TRANSPORT_RESPONSE' && payload.id === this.identifier) {
         Log.info('received' + notification);
         if(payload.data && payload.data.status === "OK"){
-            this.data = payload.data;
+            this.info = payload.data;
             this.loaded = true;
             this.updateDom(this.config.animationSpeed * 1000);
         }
@@ -202,12 +202,12 @@ Module.register('localtransport', {
         var ul = document.createElement("ul");
         var Nrs = 0; //number of routes
         var routeArray = []; //array of all alternatives for later sorting
-        for(var routeKey in this.data.routes) {
+        for(var routeKey in this.info.routes) {
             /*each route describes a way to get from A to Z*/
             //if(Nrs >= this.config.maxAlternatives){
             //  break;
             //}
-            var route = this.data.routes[routeKey];
+            var route = this.info.routes[routeKey];
             var li = document.createElement("li");
             li.className = "small";
             var arrival = 0;
