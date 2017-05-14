@@ -1,12 +1,12 @@
 /* global Module */
 /* Magic Mirror
- * Module: localtransport
+ * Module: MMM-LocalTransport
  *
  * By Christopher Fenner https://github.com/CFenner
  * style options by Lasse Wollatz
  * MIT Licensed.
  */
-Module.register('localtransport', {
+Module.register('MMM-LocalTransport', {
   defaults: {
     maximumEntries: 3,
     displayStationLength: 0,
@@ -34,7 +34,7 @@ Module.register('localtransport', {
     Log.info('Starting module: ' + this.name);
     this.loaded = false;
     this.url = this.config.apiBase + this.config.apiEndpoint + this.getParams();
-    var d = new Date(); 
+    var d = new Date();
     this.lastupdate = d.getTime() - 2 * this.config.updateInterval * 60 * 1000;
     this.update();
     // refresh every 0.25 minutes
@@ -44,9 +44,9 @@ Module.register('localtransport', {
   },
   update: function() {
     //updateDOM
-    var dn = new Date(); 
+    var dn = new Date();
     if (dn.getTime() - this.lastupdate >= this.config.updateInterval * 60 * 1000){
-        //perform main update 
+        //perform main update
         //request routes from Google
         this.sendSocketNotification(
             'LOCAL_TRANSPORT_REQUEST', {
@@ -80,7 +80,7 @@ Module.register('localtransport', {
     return params;
   },
   renderLeg: function(wrapper, leg){
-    /* renderLeg 
+    /* renderLeg
      * creates HTML element for one leg of a route
      */
     var depature = leg.departure_time.value * 1000;
@@ -100,7 +100,7 @@ Module.register('localtransport', {
     wrapper.appendChild(span);
   },
   renderStep: function(wrapper, step){
-    /* renderStep 
+    /* renderStep
      * creates HTML element for one step of a leg
      */
     if(step.travel_mode === "WALKING"){
@@ -111,7 +111,7 @@ Module.register('localtransport', {
              *specified, mark this route to be skipped*/
             wrapper.innerHTML = "too far";
         }else if(this.config.displayWalkType != 'none'){
-            /*if walking and walking times should be 
+            /*if walking and walking times should be
              *specified, add symbol and time*/
             var img = document.createElement("img");
             if(this.config.showColor){
@@ -133,7 +133,7 @@ Module.register('localtransport', {
             wrapper.appendChild(span);
         }else{
             /*skip walking*/
-            return; 
+            return;
         }
     }else{
         /*if this is a transit step*/
@@ -203,7 +203,7 @@ Module.register('localtransport', {
         wrapper.innerHTML = this.translate("LOADING_CONNECTIONS");
         wrapper.className = "small dimmed";
     }else{
-        /*create an unsorted list with each 
+        /*create an unsorted list with each
          *route alternative being a new list item*/
         //var udt = document.createElement("div");
         //udt.innerHTML = moment().format("HH:mm:ss") + " (" +  this.lastupdate + ")";
@@ -229,15 +229,15 @@ Module.register('localtransport', {
                 var tmpwrapper = document.createElement("text");
                 for(var stepKey in leg.steps) {
                     /*each leg consists of several steps
-                     *e.g. (1) walk from A to B, then 
-                           (2) take the bus from B to C and then 
+                     *e.g. (1) walk from A to B, then
+                           (2) take the bus from B to C and then
                            (3) walk from C to Z*/
                     var step = leg.steps[stepKey];
                     this.renderStep(tmpwrapper, step);
                     if (tmpwrapper.innerHTML == "too far"){
                         //walking distance was too long -> skip this option
                         break;
-                    }       
+                    }
                 }
                 if (tmpwrapper.innerHTML == "too far"){
                     //walking distance was too long -> skip this option
@@ -252,32 +252,32 @@ Module.register('localtransport', {
                 Nrs += 1;
             }
         }
-        
+
         /*sort the different alternative routes by arrival time*/
         routeArray.sort(function(a, b) {
             return parseFloat(a.arrival) - parseFloat(b.arrival);
         });
         /*only show the first few options as specified by "maximumEntries"*/
         routeArray = routeArray.slice(0, this.config.maximumEntries);
-        
+
         /*create fade effect and append list items to the list*/
         var e = 0;
         Nrs = routeArray.length;
         for(var dataKey in routeArray) {
             var routeData = routeArray[dataKey];
             var routeHtml = routeData.html;
-            // Create fade effect. 
-            if (this.config.fade && this.config.fadePoint < 1) { 
-                if (this.config.fadePoint < 0) { 
-                    this.config.fadePoint = 0; 
-                } 
-                var startingPoint = Nrs * this.config.fadePoint; 
-                var steps = Nrs - startingPoint; 
-                if (e >= startingPoint) { 
-                    var currentStep = e - startingPoint; 
+            // Create fade effect.
+            if (this.config.fade && this.config.fadePoint < 1) {
+                if (this.config.fadePoint < 0) {
+                    this.config.fadePoint = 0;
+                }
+                var startingPoint = Nrs * this.config.fadePoint;
+                var steps = Nrs - startingPoint;
+                if (e >= startingPoint) {
+                    var currentStep = e - startingPoint;
                     routeHtml.style.opacity = 1 - (1 / steps * currentStep);
                 }
-            } 
+            }
             ul.appendChild(routeHtml);
             e += 1;
         }
@@ -285,14 +285,13 @@ Module.register('localtransport', {
     }
     return wrapper;
   },
-  shorten: function(string, maxLength) { 
+  shorten: function(string, maxLength) {
     /*shorten
      *shortens a string to the number of characters specified*/
-    if (string.length > maxLength) { 
-        return string.slice(0,maxLength) + "&hellip;"; 
+    if (string.length > maxLength) {
+        return string.slice(0,maxLength) + "&hellip;";
     }
-    return string; 
+    return string;
   }
 
 });
-
