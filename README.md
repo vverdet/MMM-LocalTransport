@@ -1,9 +1,7 @@
-# MagicMirror-LocalTransport-Module
+[![code climate](https://codeclimate.com/github/CFenner/MMM-LocalTransport/badges/gpa.svg)](https://codeclimate.com/github/CFenner/MMM-LocalTransport)
+[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://choosealicense.com/licenses/mit/)
 
-<p>
-<img src="https://img.shields.io/badge/Status-BETA-red.svg" alt="Status-BETA">
-<a href="http://choosealicense.com/licenses/mit"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
-</p>
+# MagicMirror-LocalTransport-Module
 
 This module display the next local transport connection between an origin and destination.
 
