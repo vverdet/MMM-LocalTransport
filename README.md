@@ -9,23 +9,31 @@ This module display the next local transport connection between an origin and de
 
 ![preview](https://github.com/GHLasse/MagicMirror-LocalTransport-Module/blob/master/.github/preview-Berlin.png)
 
-## Installation
 
-Go to your MagicMirror folder.
+## Usage 
 
-`cd MagicMirror`
+You need to install the module for your MagicMirror.
 
-Clone the repository.
+### Installation
 
-`git clone https://github.com/CFenner/MagicMirror-LocalTransport-Module.git modules/localtransport`
+Navigate into your MagicMirror's modules folder:
 
-## Configuration
+```shell
+cd ~/MagicMirror/modules
+```
+Clone this repository:
+```shell
+git clone https://github.com/CFenner/MMM-LocalTransport
+```
+Configure the module in your config.js file.
+
+### Configuration
 
 Add module configuration to config.js.
 
 ```js
 {
-  module: 'localtransport',
+  module: 'MMM-LocalTransport',
   position: 'ANY_POSITION',
   config: {
     api_key: 'YOUR_API KEY',
@@ -59,7 +67,7 @@ Add module configuration to config.js.
 
 ```
 {
-  module: 'localtransport',
+  module: 'MMM-LocalTransport',
   header: 'to Victoriy Coach Station',
   position: 'top_left',
   config: {
@@ -76,7 +84,7 @@ Add module configuration to config.js.
 ![London - left long block](https://github.com/GHLasse/MagicMirror-LocalTransport-Module/blob/master/.github/preview-London.png)
 ```
 {
-  module: 'localtransport',
+  module: 'MMM-LocalTransport',
   header: 'nach Berlin',
   position: 'top_right',
   config: {
@@ -95,7 +103,7 @@ Add module configuration to config.js.
 ![Berlin - right short](https://github.com/GHLasse/MagicMirror-LocalTransport-Module/blob/master/.github/preview-Berlin.png)
 ```
 {
-  module: 'localtransport',
+  module: 'MMM-LocalTransport',
   header: 'to Museum of Art',
   position: 'top_left',
   config: {
