@@ -90,7 +90,7 @@ Module.register('MMM-LocalTransport', {
     span.className = "small bright";
     span.innerHTML = moment(depature).locale(this.config.language).fromNow();
     // span.innerHTML += "from " + depadd;
-    if (this.config.displayArrival && this.config.timeFormat == 24){
+    if (this.config.displayArrival && this.config.timeFormat === 24){
         span.innerHTML += " ("+this.translate("ARRIVAL")+": " + moment(arrival).format("H:mm") + ")";
     }else if(this.config.displayArrival){
         span.innerHTML += " ("+this.translate("ARRIVAL")+": " + moment(arrival).format("h:mm") + ")";
@@ -124,7 +124,7 @@ Module.register('MMM-LocalTransport', {
             wrapper.appendChild(img)
             var span = document.createElement("span");
             span.innerHTML = moment.duration(duration, 'seconds').locale(this.config.language).humanize();
-            if(this.config.displayWalkType == 'short'){
+            if(this.config.displayWalkType === 'short'){
                 span.innerHTML = span.innerHTML.replace(this.translate("MINUTE_PL"),this.translate("MINUTE_PS"));
                 span.innerHTML = span.innerHTML.replace(this.translate("MINUTE_SL"),this.translate("MINUTE_SS"));
                 span.innerHTML = span.innerHTML.replace(this.translate("SECOND_PL"),this.translate("SECOND_PS"));
@@ -159,7 +159,7 @@ Module.register('MMM-LocalTransport', {
             if (this.config.displayStationLength > 0){
                 /* add departure stop (shortened)*/
                 span.innerHTML += " ("+this.translate("FROM")+" " + this.shorten(details.departure_stop.name, this.config.displayStationLength) + ")";
-            }else if (this.config.displayStationLength == 0){
+            }else if (this.config.displayStationLength === 0){
                 /* add departure stop*/
                 span.innerHTML += " ("+this.translate("FROM")+" " + details.departure_stop.name + ")";
             }
@@ -234,12 +234,12 @@ Module.register('MMM-LocalTransport', {
                            (3) walk from C to Z*/
                     var step = leg.steps[stepKey];
                     this.renderStep(tmpwrapper, step);
-                    if (tmpwrapper.innerHTML == "too far"){
+                    if (tmpwrapper.innerHTML === "too far"){
                         //walking distance was too long -> skip this option
                         break;
                     }
                 }
-                if (tmpwrapper.innerHTML == "too far"){
+                if (tmpwrapper.innerHTML === "too far"){
                     //walking distance was too long -> skip this option
                     li.innerHTML = "too far";
                     break;
@@ -247,7 +247,7 @@ Module.register('MMM-LocalTransport', {
                 this.renderLeg(li, leg);
                 li.appendChild(tmpwrapper);
             }
-            if (li.innerHTML != "too far"){
+            if (li.innerHTML !== "too far"){
                 routeArray.push({"arrival":arrival,"html":li});
                 Nrs += 1;
             }
