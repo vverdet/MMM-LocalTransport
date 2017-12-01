@@ -8,12 +8,12 @@
  */
 Module.register('MMM-LocalTransport', {
   defaults: {
-    maximumEntries: 3,
+    maximumEntries: 7,
     displayStationLength: 0,
     displayWalkType: 'short',
     displayArrival: true,
     maxWalkTime: 10,
-    fade: true,
+    fade: false,
     fadePoint: 0.1,
     showColor: true,
     maxModuleWidth: 0,
@@ -83,12 +83,12 @@ Module.register('MMM-LocalTransport', {
     /* renderLeg
      * creates HTML element for one leg of a route
      */
-    var depature = leg.departure_time.value * 1000;
+    var departure = leg.departure_time.value * 1000;
     var arrival = leg.arrival_time.value * 1000;
     //var depadd = leg.start_address;
     var span = document.createElement("div");
     span.className = "small bright";
-    span.innerHTML = moment(depature).locale(this.config.language).fromNow();
+    span.innerHTML = moment(departure).format("H:mm");
     // span.innerHTML += "from " + depadd;
     if (this.config.displayArrival && this.config.timeFormat === 24){
         span.innerHTML += " ("+this.translate("ARRIVAL")+": " + moment(arrival).format("H:mm") + ")";
